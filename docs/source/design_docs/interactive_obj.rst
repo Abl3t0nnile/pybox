@@ -1,5 +1,0 @@
-Interaktive Objekte
-===================
-Interaktive Objekte nehmen eine zentrale Rolle innerhalb der Engine ein. Durch sie wird die Spielwelt erst zum Leben erweckt. Diese interaktiven Gegenstände ermöglichen es dem Spieler mit der Spielwelt zu interagieren, indem er Informationen über diese Objekte erhält, sie modifiziert oder miteinander kombiniert. Ein interaktives Objekt kann dabei viele Dinge verkörpern. Es kann sich dabei um einen Raum in der Spielwelt, ein Möbelstück, einen kleinen Gegenstand, einen NPC oder andere abstrakte Dinge handeln.
-
-Objekte dieses Typs haben zwei Hauptaufgaben im Funktionskontext der Engine. Zum einen implementieren sie die Datanbankschnittstelle, wodurch jedes interaktive Objekt in einer PyBox Datenbank gespeichert und aus dieser abgerufen werden kann. Zum anderen, bilden sie die Interaktionsmöglichkeiten ab, die dem Spieler zu jedem Zeitpunkt zur Verfügung stehen.
