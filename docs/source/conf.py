@@ -14,6 +14,9 @@
 
 import os
 import sys
+
+from sphinx_typlog_theme import add_badge_roles
+
 sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -96,3 +99,6 @@ html_sidebars = {
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
+
+def setup(app):
+    add_badge_roles(app)

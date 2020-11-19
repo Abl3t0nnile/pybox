@@ -8,16 +8,14 @@
     :align: center
 
 
-Welcome to PyBox's documentation!
-=================================
+Willkommen zur Dokumentation der PyBox Engine
+=============================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
 
-   guide/index
-   design_docs/index
-   api/index
+    guide/index
+    api
 
 Indices and tables
 ==================
