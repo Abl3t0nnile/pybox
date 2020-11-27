@@ -1,6 +1,17 @@
 API Referenz
 ============
 
-.. autoclass:: pybox.database.PyBoxDB
+.. autoclass:: pybox.models.GameObject
+    :members:
+    :member-order: bysource
 
-    Hier steht etwas ...
+Externe Pakete und Module
+-------------------------
+Dieser Abschnitt der API Dokumentation, bietet Zugriff auf die wichtigsten Objekte externer Pakete und Module.
+
+ZODB - Die Datenbank der Wahl
+*****************************
+
+.. autoclass:: ZODB.DB
+    :members:
+    :member-order: bysource

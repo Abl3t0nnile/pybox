@@ -27,7 +27,12 @@ class _SceneConnection:
     
     def _get__boundObj(self) -> object:
         return self.__boundObj
-    boundObj = property(_get__boundObj)
+    def _set__boundObj(self, obj: GameObject) -> None:
+        if not isinstance(obj, GameObject):
+            raise TypeError
+        else:
+            self.__boundObj = obj
+    boundObj = property(_get__boundObj, _set__boundObj)
 
 class Scene(GameObject):
     """
@@ -40,22 +45,20 @@ class Scene(GameObject):
     def __init__(self, alias: str, name: str):
         self.__exits = PersistentMapping()
         self.__assets = PersistentList()
-        super(Scene, self).__init__(alias, name)
+        self.visited = False
+        super().__init__(alias, name)
     
     def _get__exits(self) -> dict:
         "Read only Property, der Zugriff auf die Ausgänge einer Szene gewährt."
         return self.__exits
     exits = property(_get__exits)
     
-    def get_exit(self, adress: str, default=None) -> object:
+    def get_adjacent_scene(self, adress: str, default=None) -> GameObject:
         "Gibt den Ausgang für die gegebene `address` aus, sofern vorhanden. Anderfalls wird `default` ausgegeben."
         try:
             return self.__exits[adress].pointer
         except KeyError:
-            print("In diese Richtung für kein Weg.")
-        except AssertionError as e:
-            print(e)
-        return default
+            return None
     
     def _get_assets(self) -> PersistentList:
         "Read / Write Property, welches Zugriff auf die in der Szene referenzierten In Game Items bietet."

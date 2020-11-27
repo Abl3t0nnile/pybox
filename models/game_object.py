@@ -3,7 +3,9 @@ from persistent.list import PersistentList
 from persistent.mapping import PersistentMapping
 
 class GameObject(Persistent):
-    """Die Basisklasse aller Objekte, die in der Objektdatenbank eines PyBox Projekts gespeichert werden. Diese Basisklasse ist für In Game Objekte wie z.B. Szenen oder Assets vorgesehen.
+    """Die Basisklasse aller interaktiven Spielobjekte.
+    
+    Implementiert das Standardinterface der PyBox Engine, sowie das Interface für persistente Objekte, die zur Verwendung mit einer :class:`ZODB` Datenbank vorgesehen sind.
     """
     def __init__(self, alias: str, name: str):
         # Identifiziert einen Gegenstand, nicht aber die Instanz eines Objekts
@@ -21,18 +23,19 @@ class GameObject(Persistent):
         self.nameAdditions = PersistentList()
     
     def _get__alias(self) -> str:
+        "Read only Property zur eindeutigen Identifikation einer bestimmten Instanz dieses Typs."
         return self.__alias
     alias = property(_get__alias)
     
     def _get__name(self) -> str:
-        "Read only Property, das eine Objektbezeichnung in Form eines Strings enthält."
+        "Read only Property, welches eine Objektbezeichnung in Form eines Strings enthält."
         name = ''
-        name += ', '.join(self.nameAdditions)
+        name += ', '.join(self.nameAdditions) + ' '
         if not self.namePrefix:
-            name += self._name.capitalize()
+            name += self._name
         else:
-            name += self.namePrefix.capitalize() + self._name
-        return name
+            name += self.namePrefix + self._name
+        return name.strip()
     name = property(_get__name)
     
     def __str__(self):

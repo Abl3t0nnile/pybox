@@ -10,5 +10,4 @@ from .database import PyBoxDB
 from .models import (
     Scene,
     GameObject,
-    Player,
 )
